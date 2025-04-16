@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build project
         run: npm run build
         env:
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
@@ -37,7 +37,26 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Deploy to AWS Amplify
+      - name: Zip the build directory
+        run: zip -r build.zip build/
+
+      - name: Upload to S3
+        run: aws s3 cp build.zip s3://${{ secrets.AWS_S3_BUCKET }}/build.zip
+
+      - name: Create deployment
+        id: create_deploy
         run: |
-          aws amplify start-job --app-id ${{ secrets.AWS_AMPLIFY_APP_ID }} --branch-name main --job-type RELEASE
-          aws s3 sync build/ s3://${{ secrets.AWS_S3_BUCKET }} --delete
+          DEPLOYMENT_JSON=$(aws amplify create-deployment \
+            --app-id ${{ secrets.AWS_AMPLIFY_APP_ID }} \
+            --branch-name main)
+          echo "$DEPLOYMENT_JSON"
+          JOB_ID=$(echo $DEPLOYMENT_JSON | jq -r '.jobId')
+          echo "job_id=$JOB_ID" >> $GITHUB_OUTPUT
+
+      - name: Start deployment
+        run: |
+          aws amplify start-deployment \
+            --app-id ${{ secrets.AWS_AMPLIFY_APP_ID }} \
+            --branch-name main \
+            --job-id ${{ steps.create_deploy.outputs.job_id }} \
+            --source-url https://s3.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_S3_BUCKET }}/build.zip
