@@ -23,7 +23,7 @@
   }
 
   .user-bubble {
-    @apply bg-accent rounded-bl-none rounded-2xl p-4 max-w-[80%] break-words;
+    @apply bg-primary rounded-br-none rounded-2xl p-4 max-w-[80%] break-words;
   }
 
   .ai-bubble {
