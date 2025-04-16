@@ -11,7 +11,6 @@ import {
   doc,
   writeBatch,
   getDocs,
-  deleteDoc, //optional, as we're using batch
 } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { useAuth } from "./AuthContext";
