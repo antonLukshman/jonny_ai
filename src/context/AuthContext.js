@@ -38,7 +38,18 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+      // Create an enhanced user object with additional properties
+      if (user) {
+        const enhancedUser = {
+          ...user,
+          displayName: user.displayName || "User",
+          photoURL: user.photoURL || null,
+          // Add other properties you might need
+        };
+        setCurrentUser(enhancedUser);
+      } else {
+        setCurrentUser(null);
+      }
       setLoading(false);
     });
 
