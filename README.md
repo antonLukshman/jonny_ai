@@ -16,10 +16,6 @@
 
 Jonny AI is a modern web application offering an intuitive chat interface powered by DeepSeek's advanced AI capabilities. Experience fluid conversations with sophisticated AI responses in a sleek, responsive interface designed for seamless interactions.
 
-<div align="center">
-  <img src="https://via.placeholder.com/800x450/111111/ff3366?text=Jonny+AI+Screenshot" alt="Jonny AI Interface Screenshot" />
-</div>
-
 ## ✨ Features
 
 - **🧠 AI-Driven Conversations** - Intelligent responses from DeepSeek's powerful language model
@@ -39,10 +35,6 @@ Jonny AI is a modern web application offering an intuitive chat interface powere
 - **DevOps:** GitHub-Amplify integration with continuous deployment
 - **CI/CD:** Automatic builds and deployments on commit
 
-<div align="center">
-  <img src="https://via.placeholder.com/600x300/111111/ff3366?text=Tech+Stack+Diagram" alt="Tech Stack Diagram" />
-</div>
-
 ## 🚀 Architecture
 
 Jonny AI employs a serverless architecture leveraging AWS cloud services for optimal performance and scalability:
@@ -55,7 +47,7 @@ Jonny AI employs a serverless architecture leveraging AWS cloud services for opt
 
 ## 🌐 Live Demo
 
-Experience Jonny AI in action: [jonny-ai.yourdomain.com](https://jonny-ai.yourdomain.com)
+Experience Jonny AI in action: [https://www.fastcloud68.com](https://www.fastcloud68.com)
 
 ## 📦 Development
 
@@ -70,7 +62,7 @@ Experience Jonny AI in action: [jonny-ai.yourdomain.com](https://jonny-ai.yourdo
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/jonny-ai.git
+git clone https://github.com/antonLukshman/jonny_ai.git
 
 # Navigate to the project directory
 cd jonny-ai
@@ -92,18 +84,14 @@ The application uses a streamlined deployment process:
 4. Deployment to production environment with zero downtime
 5. CloudFront CDN ensures global availability with low latency
 
-<div align="center">
-  <img src="https://via.placeholder.com/600x300/111111/ff3366?text=Deployment+Workflow" alt="Deployment Workflow" />
-</div>
-
 ## 🔗 Connect
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-5340ff?style=for-the-badge&logo=Google-chrome&logoColor=white)](https://yourportfolio.com/)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourusername)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/antonLukshman)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anton-luckshman-53121a265)
 
 ---
 
 <div align="center">
-  Made with ❤️ by Your Name
+  Made with ❤️ by Anton Luckshman
 </div>
