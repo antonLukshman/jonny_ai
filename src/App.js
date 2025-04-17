@@ -12,6 +12,7 @@ import Signup from "./components/Auth/Signup";
 import ChatWindow from "./components/Chat/ChatWindow";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Common/Header";
+import SpeechInitializer from "./components/SpeechInitializer"; // Import SpeechInitializer
 import "./styles/globals.css";
 
 // Private route component
@@ -31,6 +32,7 @@ function MainLayout() {
 
   return (
     <ChatProvider>
+      <SpeechInitializer /> {/* Add SpeechInitializer here */}
       <div className="h-screen flex flex-col">
         <Header setIsSidebarOpen={setIsSidebarOpen} />
 
