@@ -1,6 +1,6 @@
 # Jonny AI
 
-![Jonny AI Banner](./public/banner.png)
+![Jonny AI Banner](./public/Banner.png)
 
 <div align="center">
   
