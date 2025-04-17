@@ -1,6 +1,8 @@
 import React from "react";
 import { useSpring, animated } from "@react-spring/web";
+import ReactMarkdown from "react-markdown";
 import Avatar from "../Common/Avatar";
+import TextToSpeechButton from "./TextToSpeechButton";
 
 function ChatMessage({ message, isLast }) {
   const isAI = message.sender === "ai";
@@ -13,15 +15,11 @@ function ChatMessage({ message, isLast }) {
     delay: 100,
   });
 
-  // Format the message content (handle newlines, etc.)
-  const formatContent = (content) => {
-    return content.split("\n").map((line, index) => (
-      <React.Fragment key={index}>
-        {line}
-        {index < content.split("\n").length - 1 && <br />}
-      </React.Fragment>
-    ));
-  };
+  // Clean the message content of any system tags
+  const cleanContent = message.content.replace(
+    /<userStyle>.*?<\/userStyle>/g,
+    ""
+  );
 
   return (
     <div
@@ -39,7 +37,14 @@ function ChatMessage({ message, isLast }) {
           message.isError ? "bg-red-500" : ""
         }`}
       >
-        {formatContent(message.content)}
+        <div className="flex justify-between items-start">
+          <div className="flex-1 markdown-content">
+            {/* Render markdown content */}
+            <ReactMarkdown>{cleanContent}</ReactMarkdown>
+          </div>
+          {/* Add TextToSpeechButton for AI messages */}
+          {isAI && <TextToSpeechButton text={cleanContent} />}
+        </div>
       </animated.div>
 
       {!isAI && (
