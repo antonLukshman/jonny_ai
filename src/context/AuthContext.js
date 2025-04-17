@@ -38,13 +38,12 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      // Create an enhanced user object with additional properties
       if (user) {
+        // Enhance user object to ensure display name and photo URL are accessible
         const enhancedUser = {
           ...user,
-          displayName: user.displayName || "User",
+          displayName: user.displayName || user.email.split("@")[0], // Fallback to username from email
           photoURL: user.photoURL || null,
-          // Add other properties you might need
         };
         setCurrentUser(enhancedUser);
       } else {
