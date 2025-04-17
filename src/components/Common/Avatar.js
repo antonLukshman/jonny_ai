@@ -2,8 +2,15 @@ import React, { useMemo } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useAuth } from "../../context/AuthContext";
 
-function Avatar({ isAI }) {
+function Avatar({ isAI, size = "md" }) {
   const { currentUser } = useAuth();
+
+  // Size classes
+  const sizeClasses = {
+    sm: "w-6 h-6",
+    md: "w-8 h-8",
+    lg: "w-10 h-10",
+  };
 
   // Random animation for AI avatar to make it more lively
   const aiAnimation = useSpring({
@@ -18,41 +25,43 @@ function Avatar({ isAI }) {
 
   // For user avatar, use initials or default
   const userInitial = useMemo(() => {
-    // Get initial from display name if available, otherwise from email
-    if (currentUser?.displayName) {
+    if (!currentUser) return "U";
+    if (currentUser.displayName) {
       return currentUser.displayName.charAt(0).toUpperCase();
-    } else if (currentUser?.email) {
-      return currentUser.email.charAt(0).toUpperCase();
     }
-    return "U";
+    return currentUser.email.charAt(0).toUpperCase();
   }, [currentUser]);
 
   if (isAI) {
     return (
       <animated.div
         style={aiAnimation}
-        className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center overflow-hidden"
+        className={`${sizeClasses[size]} rounded-full bg-secondary flex items-center justify-center overflow-hidden`}
       >
-        <img src="/logo.svg" alt="Jonny AI" className="w-6 h-6" />
+        <img src="/logo.svg" alt="Jonny AI" className="w-3/4 h-3/4" />
       </animated.div>
     );
   }
 
-  // If user has a photo URL, use it; otherwise, display initial
+  // If user has a photo URL, use it
   if (currentUser?.photoURL) {
     return (
-      <div className="w-8 h-8 rounded-full overflow-hidden">
+      <div className={`${sizeClasses[size]} rounded-full overflow-hidden`}>
         <img
           src={currentUser.photoURL}
-          alt="User"
+          alt={currentUser.displayName || "User"}
           className="w-full h-full object-cover"
+          referrerPolicy="no-referrer" // Important for Google profile images
         />
       </div>
     );
   }
 
+  // Otherwise, show the initial with background
   return (
-    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-semibold">
+    <div
+      className={`${sizeClasses[size]} rounded-full bg-accent flex items-center justify-center text-white font-semibold`}
+    >
       {userInitial}
     </div>
   );
