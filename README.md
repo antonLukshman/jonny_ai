@@ -1,6 +1,6 @@
 # Jonny AI
 
-![Jonny AI Banner](https://via.placeholder.com/1200x400/111111/ff3366?text=Jonny+AI)
+![Jonny AI Banner](./public/banner.png)
 
 <div align="center">
   
