@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useChat } from "../../context/ChatContext";
 import RecentChats from "./RecentChats";
 import Button from "../Common/Button";
+import Avatar from "../Common/Avatar"; // Import the Avatar component
 
 function Sidebar({ isOpen, setIsOpen }) {
   const { currentUser, logout } = useAuth();
