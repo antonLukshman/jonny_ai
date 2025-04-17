@@ -90,18 +90,20 @@ function Sidebar({ isOpen, setIsOpen }) {
         {currentUser && (
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-semibold">
-                {currentUser.email.charAt(0).toUpperCase()}
-              </div>
+              <Avatar isAI={false} size="md" />
               <div className="ml-2 overflow-hidden">
-                <p className="text-sm text-white truncate">
+                <p className="text-sm text-white font-medium truncate">
+                  {currentUser.displayName || currentUser.email.split("@")[0]}
+                </p>
+                <p className="text-xs text-gray-400 truncate">
                   {currentUser.email}
                 </p>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="text-gray-400 hover:text-white"
+              className="text-gray-400 hover:text-white bg-background-lighter hover:bg-accent p-1.5 rounded-full transition-colors"
+              title="Sign out"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
